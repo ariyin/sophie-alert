@@ -11,6 +11,20 @@ git clone https://github.com/ariyin/sophie-alert
 cd sophie-alert
 ```
 
+Create a virtual environment (required to schedule the script unless you know some other way).
+
+```bash
+python3 -m venv .venv
+```
+
+```bash
+# Mac
+source .venv/bin/activate
+
+# Windows
+.\.venv\Scripts\activate
+```
+
 Then, install the needed packages for the script.
 
 ```bash
@@ -39,13 +53,17 @@ To find your SMTP server and port, search [here](https://domar.com/pages/smtp_po
 
 Replace the `urls` field in `main.py` with the links of the products you wish to track. The links should start with `https://costco.bysophieofficial.com/products/` and everything after a `?` would be extraneous.
 
+### Testing
+
+See if you have inputted everything correctly by running the script (`python3 main.py`) with a product that's currently in stock. If you get an email in your inbox, you did everything correctly! 
+
 ### Scheduling
 
 **Mac**
 
 The plist file will run as a LaunchAgent at 8 AM every day. If your computer isn't running at 8 AM, it'll run the next time your computer wakes up.
 
-Change the paths in `sophie.plist` to the appropriate paths and then move the file to `~/Library/LaunchAgents`. If you use a venv environment for Python, create a venv environment in the sophie-alert directory and link the Python path in the plist to the Python path in the `.venv` folder. For example, the path might be `/Users/username/sophie-alert/.venv/bin/python3`.
+Change the paths in `sophie.plist` to the appropriate paths and then move the file to `~/Library/LaunchAgents`. Link the Python path in the plist to the Python path in the `.venv` folder. For example, the path might be `/Users/username/sophie-alert/.venv/bin/python3`.
 
 There are two ways to launch the agent. One is by using terminal commands, and the other is by installing a third-party application. I failed with the terminal commands but they may work for you.
 
